@@ -1,0 +1,2 @@
+add_lunch_combo cm_j2lte-eng
+add_lunch_combo cm_j2lte-userdebug

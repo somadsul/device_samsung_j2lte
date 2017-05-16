@@ -1,6 +1,3 @@
-# CM Device Tree for Samsung Galaxy J2 (J200G)
+# CM Device Tree For Samsung Galaxy J2 LTE[J200G]
 
-Please note :
-
-This tree is far from finished and WIP. Before you start building, apply the patches by running the apply.sh script located in that pach directory
-# android_device_samusng_j2lte
+Before You Start Building,Apply The Patches By Using "chmod a+x apply.sh" Script Located In That Patch Directory.

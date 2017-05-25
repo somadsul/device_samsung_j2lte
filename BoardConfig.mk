@@ -31,9 +31,14 @@ BOARD_KERNEL_PAGESIZE := 2048
 
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/samsung/j2lte/dtb.img
 
-#TARGET_KERNEL_CONFIG := cm_j2lteswa_00_defconfig
-#TARGET_KERNEL_SOURCE := kernel/samsung/j2lte
-PRODUCT_COPY_FILES += device/samsung/j2lte/prebuilt_kernel:kernel
+# Kernel
+TARGET_KERNEL_CONFIG := j2lte_00_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/j2lte
+
+# CMHW
+BOARD_HARDWARE_CLASS := device/samsung/j2lte/cmhw
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/j2lte/bluetooth
 
 #Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x360000000
@@ -48,6 +53,32 @@ TARGET_OTA_ASSERT_DEVICE := j2lte,j2ltedd
 
 # PowerHAL
 TARGET_POWERHAL_VARIANT := exynos3
+
+# Sensors
+TARGET_PROVIDES_LIBSENSORS := true
+
+# GUI
+BOARD_EGL_NEEDS_HANDLE_VALUE := true
+
+# Recovery
+TARGET_RECOVERY_DEVICE_DIRS += device/samsung/j2lte
+TARGET_RECOVERY_FSTAB := device/samsung/j2lte/rootdir/etc/fstab.universal3475
+BOARD_HAS_LARGE_FILESYSTEM := true
+
+# TWRP
+#ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+#RECOVERY_VARIANT := twrp
+#endif
+
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_NO_SCREEN_BLANK := true
+TW_NO_REBOOT_BOOTLOADER := true
+TW_HAS_DOWNLOAD_MODE := true
+TW_INCLUDE_NTFS_3G := true
+TW_INCLUDE_CRYPTO := true
+#TW_USE_TOOLBOX := true
+TWRP_INCLUDE_LOGCAT := true
 
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
